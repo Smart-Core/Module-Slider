@@ -1,0 +1,9 @@
+{
+    "name": "smart-core/module-slider",
+    "require": {
+        "smart-core/cms-bundle": "*"
+    },
+    "autoload": {
+        "psr-4": { "SmartCore\\Module\\Slider\\": "" }
+    }
+}

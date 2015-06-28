@@ -43,7 +43,7 @@
                             {% if slide.enabled %}
                                 <span class="label label-success">Включен</span>
                             {% else %}
-                                <span class="label label-important">Отключен</span>
+                                <span class="label label-danger label-important">Отключен</span>
                             {% endif %}
                         </td>
                         <td>{{ slide.createdAt|localizeddate('long') }}</td>

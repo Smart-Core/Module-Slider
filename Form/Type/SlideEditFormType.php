@@ -4,7 +4,7 @@ namespace SmartCore\Module\Slider\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SlideEditFormType extends AbstractType
 {
@@ -20,7 +20,7 @@ class SlideEditFormType extends AbstractType
         ;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => 'SmartCore\Module\Slider\Entity\Slide',

@@ -26,6 +26,7 @@ class SliderFormType extends AbstractType
                 'choices' => [
                     'jcarousel' => 'jcarousel',
                     'nivoslider' => 'nivoslider',
+                    'bootstrap3' => 'bootstrap3',
                 ],
             ])
         ;

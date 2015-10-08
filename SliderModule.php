@@ -6,6 +6,8 @@ use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
 class SliderModule extends ModuleBundle
 {
+    protected $adminMenuBeforeCode = '<i class="fa fa-tv"></i>';
+
     /**
      * Получить виджеты для рабочего стола.
      *

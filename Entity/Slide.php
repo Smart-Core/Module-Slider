@@ -23,7 +23,7 @@ class Slide
     use ColumnTrait\CreatedAt;
     use ColumnTrait\Position;
     use ColumnTrait\Title;
-    use ColumnTrait\UserId;
+    use ColumnTrait\FosUser;
 
     /**
      * @Assert\File(maxSize="2000000")

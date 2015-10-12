@@ -49,7 +49,7 @@ class SliderService
         $slide
             ->setFileName($filename)
             ->setOriginalFileName($file->getClientOriginalName())
-            ->setUserId($this->container->get('security.token_storage')->getToken()->getUser()->getId())
+            ->setUser($this->container->get('security.token_storage')->getToken()->getUser())
         ;
 
         $this->em->persist($slide);

@@ -34,7 +34,7 @@ class SliderController extends Controller
             ->setTitle('Управление слайдами')
             ->setUri($this->generateUrl('smart_module.slider.admin_slider', ['id' => $this->slider_id]));
 
-        return $this->render('SliderModule::'.$slider->getLibrary().'.html.twig', [
+        return $this->get('twig')->render('SliderModule::'.$slider->getLibrary().'.html.twig', [
             'slider'  => $slider,
             // @todo настройку места хранения картинок, лучше в медиалибе!.
             'imgPath' => $request->getBasePath().'/'.$this->get('smart_module.slider')->getWebPath(),

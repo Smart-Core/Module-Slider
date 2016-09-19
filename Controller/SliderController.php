@@ -27,8 +27,9 @@ class SliderController extends Controller
             return new Response();
         }
 
-        /** @var \SmartCore\Module\Slider\Entity\Slider $slider */
-        $slider = $this->get('slidermodule.entity.slider_repository')->find($this->slider_id);
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->get('doctrine.orm.entity_manager');
+        $slider = $em->find('SliderModule:Slider', $this->slider_id);
 
         $this->node->addFrontControl('manage_slider')
             ->setTitle('Управление слайдами')

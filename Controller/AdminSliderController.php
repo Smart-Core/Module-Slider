@@ -3,7 +3,11 @@
 namespace SmartCore\Module\Slider\Controller;
 
 use SmartCore\Module\Slider\Entity\Slide;
+use SmartCore\Module\Slider\Form\Type\SlideCreateFormType;
+use SmartCore\Module\Slider\Form\Type\SlideEditFormType;
+use SmartCore\Module\Slider\Form\Type\SliderFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminSliderController extends Controller
@@ -17,8 +21,8 @@ class AdminSliderController extends Controller
     {
         $sliderService = $this->get('smart_module.slider');
 
-        $form = $this->createForm('smart_module_slider');
-        $form->add('create', 'submit', ['attr' => ['class' => 'btn btn-success']]);
+        $form = $this->createForm(SliderFormType::class);
+        $form->add('create', SubmitType::class, ['attr' => ['class' => 'btn btn-success']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -67,7 +71,7 @@ class AdminSliderController extends Controller
         $slide = new Slide();
         $slide->setSlider($slider);
 
-        $form = $this->createForm('smart_module_slider_item_create', $slide);
+        $form = $this->createForm(SlideCreateFormType::class, $slide);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -108,10 +112,10 @@ class AdminSliderController extends Controller
 
         $slider = $sliderService->getSlider($id);
 
-        $form = $this->createForm('smart_module_slider', $slider);
-        $form->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']]);
-        $form->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить слайдер?')"]]);
-        $form->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
+        $form = $this->createForm(SliderFormType::class, $slider);
+        $form->add('update', SubmitType::class, ['attr' => ['class' => 'btn btn-success']]);
+        $form->add('delete', SubmitType::class, ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить слайдер?')"]]);
+        $form->add('cancel', SubmitType::class, ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']]);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -153,7 +157,7 @@ class AdminSliderController extends Controller
 
         $slide = $sliderService->getSlide($id);
 
-        $form = $this->createForm('smart_module_slider_item_edit', $slide);
+        $form = $this->createForm(SlideEditFormType::class, $slide);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

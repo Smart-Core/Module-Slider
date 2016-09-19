@@ -2,6 +2,7 @@
 
 namespace SmartCore\Module\Slider\Form\Type;
 
+use SmartCore\Module\Slider\Entity\Slide;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +20,7 @@ class SlideFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Module\Slider\Entity\Slide',
+            'data_class' => Slide::class,
         ]);
     }
 

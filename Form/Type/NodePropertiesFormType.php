@@ -3,6 +3,7 @@
 namespace SmartCore\Module\Slider\Form\Type;
 
 use SmartCore\Bundle\CMSBundle\Module\AbstractNodePropertiesFormType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class NodePropertiesFormType extends AbstractNodePropertiesFormType
@@ -10,7 +11,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('slider_id', 'choice', [
+            ->add('slider_id', ChoiceType::class, [
                 'choices' => $this->getChoicesByEntity('SliderModule:Slider'),
                 'label' => 'Slider',
             ])

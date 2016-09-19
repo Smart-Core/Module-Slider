@@ -2,7 +2,9 @@
 
 namespace SmartCore\Module\Slider\Form\Type;
 
+use SmartCore\Module\Slider\Entity\Slide;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,16 +16,16 @@ class SlideEditFormType extends AbstractType
             ->add('is_enabled')
             ->add('title', null, ['attr' => ['autofocus' => 'autofocus']])
             ->add('position')
-            ->add('update', 'submit', ['attr' => ['class' => 'btn btn-success']])
-            ->add('delete', 'submit', ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить слайд?')"]])
-            ->add('cancel', 'submit', ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']])
+            ->add('update', SubmitType::class, ['attr' => ['class' => 'btn btn-success']])
+            ->add('delete', SubmitType::class, ['attr' => ['class' => 'btn btn-danger', 'onclick' => "return confirm('Вы уверены, что хотите удалить слайд?')"]])
+            ->add('cancel', SubmitType::class, ['attr' => ['class' => 'btn-default', 'formnovalidate' => 'formnovalidate']])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Module\Slider\Entity\Slide',
+            'data_class' => Slide::class,
         ]);
     }
 

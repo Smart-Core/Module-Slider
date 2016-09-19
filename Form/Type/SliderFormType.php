@@ -2,7 +2,9 @@
 
 namespace SmartCore\Module\Slider\Form\Type;
 
+use SmartCore\Module\Slider\Entity\Slider;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,13 +18,13 @@ class SliderFormType extends AbstractType
             ->add('height')
             ->add('pause_time')
             ->add('slide_properties')
-            ->add('mode', 'choice', [
+            ->add('mode', ChoiceType::class, [
                 'choices' => [
                     'INSET' => 'INSET',
                     'OUTBOUND' => 'OUTBOUND',
                 ],
             ])
-            ->add('library', 'choice', [
+            ->add('library', ChoiceType::class, [
                 'choices' => [
                     'jcarousel' => 'jcarousel',
                     'nivoslider' => 'nivoslider',
@@ -35,7 +37,7 @@ class SliderFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Module\Slider\Entity\Slider',
+            'data_class' => Slider::class,
         ]);
     }
 

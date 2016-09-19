@@ -2,7 +2,9 @@
 
 namespace SmartCore\Module\Slider\Form\Type;
 
+use SmartCore\Module\Slider\Entity\Slide;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,14 +16,14 @@ class SlideCreateFormType extends AbstractType
             ->add('file', null, ['required' => false])
             ->add('title')
             ->add('position')
-            ->add('upload', 'submit', ['attr' => ['class' => 'btn btn-success']])
+            ->add('upload', SubmitType::class, ['attr' => ['class' => 'btn btn-success']])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'SmartCore\Module\Slider\Entity\Slide',
+            'data_class' => Slide::class,
         ]);
     }
 

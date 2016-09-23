@@ -24,7 +24,7 @@ class SlideFormType extends AbstractType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_module_slider_item';
     }

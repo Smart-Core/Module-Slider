@@ -13,12 +13,12 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
         $builder
             ->add('slider_id', ChoiceType::class, [
                 'choices' => $this->getChoicesByEntity('SliderModule:Slider'),
-                'label' => 'Slider',
+                'label'   => 'Slider',
             ])
         ;
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_module_slider_node_properties';
     }

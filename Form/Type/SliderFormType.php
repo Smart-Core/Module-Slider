@@ -20,7 +20,7 @@ class SliderFormType extends AbstractType
             ->add('slide_properties')
             ->add('mode', ChoiceType::class, [
                 'choices' => [
-                    'INSET' => 'INSET',
+                    'INSET'    => 'INSET',
                     'OUTBOUND' => 'OUTBOUND',
                 ],
             ])
@@ -41,7 +41,7 @@ class SliderFormType extends AbstractType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'smart_module_slider';
     }

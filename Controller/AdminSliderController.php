@@ -6,7 +6,7 @@ use SmartCore\Module\Slider\Entity\Slide;
 use SmartCore\Module\Slider\Form\Type\SlideCreateFormType;
 use SmartCore\Module\Slider\Form\Type\SlideEditFormType;
 use SmartCore\Module\Slider\Form\Type\SliderFormType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Smart\CoreBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -28,13 +28,13 @@ class AdminSliderController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $sliderService->createSlider($form->getData());
-                $this->get('session')->getFlashBag()->add('success', 'Слайдер создан');
+                $this->addFlash('success', 'Слайдер создан');
 
                 return $this->redirect($this->generateUrl('smart_module.slider.admin'));
             }
         }
 
-        return $this->render('SliderModule:Admin:index.html.twig', [
+        return $this->render('@SliderModule/Admin/index.html.twig', [
             'form'    => $form->createView(),
             'sliders' => $sliderService->allSliders(),
         ]);
@@ -77,7 +77,7 @@ class AdminSliderController extends Controller
             $form->handleRequest($request);
             if ($form->isValid() and null !== $form->get('file')->getData()) {
                 $sliderService->save($form->getData());
-                $this->get('session')->getFlashBag()->add('success', 'Слайд создан');
+                $this->addFlash('success', 'Слайд создан');
 
                 return $this->redirect($this->generateUrl('smart_module.slider.admin_slider', ['id' => $slider->getId()]));
             }
@@ -92,7 +92,7 @@ class AdminSliderController extends Controller
             }
         }
 
-        return $this->render('SliderModule:Admin:slider.html.twig', [
+        return $this->render('@SliderModule/Admin/slider.html.twig', [
             'form'       => $form->createView(),
             'slider'     => $slider,
             'folderPath' => $folderPath,
@@ -127,20 +127,20 @@ class AdminSliderController extends Controller
             if ($form->get('delete')->isClicked()) {
                 $sliderService->deleteSlider($form->getData());
 
-                $this->get('session')->getFlashBag()->add('success', 'Слайдер удалён');
+                $this->addFlash('success', 'Слайдер удалён');
 
                 return $this->redirect($this->generateUrl('smart_module.slider.admin'));
             }
 
             if ($form->isValid() and $form->get('update')->isClicked()) {
                 $sliderService->updateSlider($form->getData());
-                $this->get('session')->getFlashBag()->add('success', 'Слайдер обновлён');
+                $this->addFlash('success', 'Слайдер обновлён');
 
                 return $this->redirect($this->generateUrl('smart_module.slider.admin_slider', ['id' => $id]));
             }
         }
 
-        return $this->render('SliderModule:Admin:slider_edit.html.twig', [
+        return $this->render('@SliderModule/Admin/slider_edit.html.twig', [
             'form'    => $form->createView(),
             'slider'  => $slider,
         ]);
@@ -168,20 +168,20 @@ class AdminSliderController extends Controller
 
             if ($form->get('delete')->isClicked()) {
                 $sliderService->deleteSlide($form->getData());
-                $this->get('session')->getFlashBag()->add('success', 'Слайд удалён');
+                $this->addFlash('success', 'Слайд удалён');
 
                 return $this->redirect($this->generateUrl('smart_module.slider.admin_slider', ['id' => $slide->getSlider()->getId()]));
             }
 
             if ($form->isValid() and $form->get('update')->isClicked()) {
                 $sliderService->updateSlide($form->getData());
-                $this->get('session')->getFlashBag()->add('success', 'Слайд обновлён');
+                $this->addFlash('success', 'Слайд обновлён');
 
                 return $this->redirect($this->generateUrl('smart_module.slider.admin_slider', ['id' => $slide->getSlider()->getId()]));
             }
         }
 
-        return $this->render('SliderModule:Admin:slide_edit.html.twig', [
+        return $this->render('@SliderModule/Admin/slide_edit.html.twig', [
             'form'  => $form->createView(),
             'slide' => $slide,
             'webPath' => $sliderService->getWebPath(),

@@ -29,13 +29,13 @@ class SliderController extends Controller
 
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->get('doctrine.orm.entity_manager');
-        $slider = $em->find('SliderModule:Slider', $this->slider_id);
+        $slider = $em->find('SliderModuleBundle:Slider', $this->slider_id);
 
         $this->node->addFrontControl('manage_slider')
             ->setTitle('Управление слайдами')
             ->setUri($this->generateUrl('smart_module.slider.admin_slider', ['id' => $this->slider_id]));
 
-        return $this->get('twig')->render('SliderModule::'.$slider->getLibrary().'.html.twig', [
+        return $this->get('twig')->render('SliderModuleBundle::'.$slider->getLibrary().'.html.twig', [
             'slider'  => $slider,
             // @todo настройку места хранения картинок, лучше в медиалибе!.
             'imgPath' => $request->getBasePath().'/'.$this->get('smart_module.slider')->getWebPath(),

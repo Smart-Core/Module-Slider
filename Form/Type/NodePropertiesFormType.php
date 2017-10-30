@@ -12,7 +12,7 @@ class NodePropertiesFormType extends AbstractNodePropertiesFormType
     {
         $builder
             ->add('slider_id', ChoiceType::class, [
-                'choices' => $this->getChoicesByEntity('SliderModule:Slider'),
+                'choices' => $this->getChoicesByEntity('SliderModuleBundle:Slider'),
                 'label'   => 'Slider',
             ])
         ;

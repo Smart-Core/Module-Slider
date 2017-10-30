@@ -4,7 +4,7 @@ namespace SmartCore\Module\Slider;
 
 use SmartCore\Bundle\CMSBundle\Module\ModuleBundle;
 
-class SliderModule extends ModuleBundle
+class SliderModuleBundle extends ModuleBundle
 {
     protected $adminMenuBeforeCode = '<i class="fa fa-tv"></i>';
 

@@ -2,25 +2,25 @@
 smart_module.slider.admin:
     path: /
     defaults:
-        _controller: SliderModule:AdminSlider:index
+        _controller: SliderModuleBundle:AdminSlider:index
 
 smart_module.slider.admin_slider:
     path: /{id}/
     defaults:
-        _controller: SliderModule:AdminSlider:slider
+        _controller: SliderModuleBundle:AdminSlider:slider
     requirements:
         id: \d+
 
 smart_module.slider.admin_slider_item_edit:
     path: /item/{id}/
     defaults:
-        _controller: SliderModule:AdminSlider:slideEdit
+        _controller: SliderModuleBundle:AdminSlider:slideEdit
     requirements:
         id: \d+
 
 smart_module.slider.admin_slider_edit:
     path: /{id}/edit
     defaults:
-        _controller: SliderModule:AdminSlider:sliderEdit
+        _controller: SliderModuleBundle:AdminSlider:sliderEdit
     requirements:
         id: \d+

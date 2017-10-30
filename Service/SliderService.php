@@ -63,7 +63,7 @@ class SliderService
      */
     public function all()
     {
-        return $this->em->getRepository('SliderModule:Slide')->findBy([], ['position' => 'ASC']);
+        return $this->em->getRepository('SliderModuleBundle:Slide')->findBy([], ['position' => 'ASC']);
     }
 
     /**
@@ -71,7 +71,7 @@ class SliderService
      */
     public function allSliders()
     {
-        return $this->em->getRepository('SliderModule:Slider')->findBy([], ['title' => 'ASC']);
+        return $this->em->getRepository('SliderModuleBundle:Slider')->findBy([], ['title' => 'ASC']);
     }
 
     /**
@@ -148,7 +148,7 @@ class SliderService
      */
     public function getSlide($id)
     {
-        return $this->em->getRepository('SliderModule:Slide')->find($id);
+        return $this->em->getRepository('SliderModuleBundle:Slide')->find($id);
     }
 
     /**
@@ -158,7 +158,7 @@ class SliderService
      */
     public function getSlider($id)
     {
-        return $this->em->getRepository('SliderModule:Slider')->find($id);
+        return $this->em->getRepository('SliderModuleBundle:Slider')->find($id);
     }
 
     /**
